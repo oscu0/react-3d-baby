@@ -2,7 +2,7 @@
 
 // https://threejs.org/manual/#en/scenegraph
 
-import { setBaseValue, useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { useThree } from "@react-three/fiber";
 import { OrbitControls, useHelper } from '@react-three/drei'
@@ -38,7 +38,7 @@ function Earth({ phi }) {
 
   return (
     <>
-      <mesh position={[10, 0, 0]}>
+      <mesh rotation={[0, phi / 10, 0]} position={[10, 0, 0]}>
         <meshLambertMaterial color="#2233FF"   attach="material"/>
         <sphereGeometry args={default_args} />
       </mesh>
@@ -50,7 +50,7 @@ function SolarSystem({ phi }) {
 
   return (
     <object3D rotation={[0, phi / 2, 0]}>
-      <pointLight color="#FFFFFF" intenisty={500} />
+      {/* <pointLight color="#FFFFFF" intenisty={500} /> */}
       <Sun phi={phi} />
       <Earth phi={phi} />
     </object3D>
